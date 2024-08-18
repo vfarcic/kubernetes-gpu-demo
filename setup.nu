@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+$env.KUBECONFIG = $"($env.PWD)/kubeconfig.yaml"
+
 gcloud auth login
 
 let project_id = $"dot-(date now | format date "%Y%m%d%H%M%S")"
@@ -36,8 +38,8 @@ input
         --namespace traefik --create-namespace --wait
 )
 
-let ingress_host = (kubectl --kubeconfig kubeconfig.yaml 
-    --namespace traefik get service traefik 
+let ingress_host = (kubectl --namespace traefik 
+    get service traefik 
     --output jsonpath="{.status.loadBalancer.ingress[0].ip}")
 
 open settings.yaml
