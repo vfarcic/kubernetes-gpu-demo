@@ -1,0 +1,15 @@
+ollama:
+  gpu:
+    enabled: true
+    type: nvidia
+    number: 1
+  models:
+  - llama2
+ingress:
+  enabled: true
+  className: traefik
+  hosts:
+  - host: ollama.35.229.122.84.nip.io
+    paths:
+    - path: /
+      pathType: Prefix
