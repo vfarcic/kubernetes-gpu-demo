@@ -9,7 +9,7 @@ ingress:
   enabled: true
   className: traefik
   hosts:
-  - host: ollama.35.229.75.73.nip.io
+  - host: ollama.34.148.177.37.nip.io
     paths:
     - path: /
       pathType: Prefix
